@@ -1,6 +1,6 @@
 # Vision Transformer
 High Dynamic Range Image Synthesis via Attention Non-Local Network
-![teaser](teaser/HDRI.png)
+![teaser](vit.png)
 ## Content
 - [Vision Transformer](#vision-transformer)
 - [Getting Started](#getting-started)
