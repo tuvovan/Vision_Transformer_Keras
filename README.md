@@ -60,6 +60,7 @@ This project is licensed under the MIT License - see the [LICENSE](https://githu
 
 ## References
 [1] AN IMAGE IS WORTH 16X16 WORDS: TRANSFORMERS FOR IMAGE RECOGNITION AT SCALE - [link](https://openreview.net/pdf?id=YicbFdNTTy)
+
 [2] Text classification with Transformer - [link](https://keras.io/examples/nlp/text_classification_with_transformer/)
 
 ## Acknowledgments
