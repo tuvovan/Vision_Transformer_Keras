@@ -15,7 +15,7 @@ if __name__ == "__main__":
     parser.add_argument("--logdir", default="logs")
     parser.add_argument("--image-size", default=32, type=int)
     parser.add_argument("--patch-size", default=4, type=int)
-    parser.add_argument("--num-layers", default=4, type=int)
+    parser.add_argument("--num-layers", default=8, type=int)
     parser.add_argument("--d-model", default=64, type=int)
     parser.add_argument("--num-heads", default=4, type=int)
     parser.add_argument("--mlp-dim", default=128, type=int)
@@ -64,12 +64,16 @@ if __name__ == "__main__":
             metrics=["accuracy"],
         )
 
-    early_stop = tf.keras.callbacks.EarlyStopping(patience=2),
-    mcp = tf.keras.callbacks.ModelCheckpoint(filepath='weights/model.{epoch:02d}-{val_loss:.2f}.h5')
+    early_stop = tf.keras.callbacks.EarlyStopping(patience=10),
+    mcp = tf.keras.callbacks.ModelCheckpoint(filepath='weights/best.h5', save_best_only=True, monitor='val_loss', mode='min')
+    reduce_lr = tf.keras.callbacks.ReduceLROnPlateau(
+    monitor='val_loss', factor=0.1, patience=3, verbose=0, mode='auto',
+    min_delta=0.0001, cooldown=0, min_lr=0)    
+
     model.fit(
         ds_train,
         validation_data=ds_test,
         epochs=args.epochs,
-        callbacks=[early_stop, mcp],
+        callbacks=[early_stop, mcp, reduce_lr],
     )
     model.save_weights(os.path.join(args.logdir, "vit"))
