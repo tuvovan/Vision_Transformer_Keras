@@ -1,5 +1,5 @@
 # Vision Transformer
-High Dynamic Range Image Synthesis via Attention Non-Local Network
+Vision Transformer
 ![teaser](vit.png)
 ## Content
 - [Vision Transformer](#vision-transformer)
