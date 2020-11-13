@@ -1,5 +1,4 @@
 tensorflow==2.2.0+
-tensorflow_addons
 keras 2.3.0
 pillow
 numpy
